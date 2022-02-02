@@ -69,6 +69,7 @@ namespace MyShop.DataAccess.InMemory
         }
 
         //Metoda returnare lista
+        //INTREBARE: Ce inseamna IQueryable si cum se foloseste?
         public IQueryable<Product> Collection()
         {
             return products.AsQueryable();
