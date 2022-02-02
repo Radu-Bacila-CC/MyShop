@@ -1,4 +1,5 @@
-﻿using MyShop.Core.Models;
+﻿using MyShop.Core.Contracts;
+using MyShop.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace MyShop.DataAccess.InMemory
     //Pentru orice clasa care o sa o folosim?
     //Daca dorim sa cautam variabile intr-o clasa generica, cum ar fi ID-ul, se poate?
     //Putem avea o clasa de baza de la care luam anumite variabile
-    public class InMemoryRepository<T> where T : BaseEntity
+    public class InMemoryRepository<T> : IRepository<T> where T : BaseEntity
     {
         ObjectCache cache = MemoryCache.Default;
         List<T> items;
@@ -33,12 +34,12 @@ namespace MyShop.DataAccess.InMemory
             cache[className] = items;
         }
 
-        public void Insert (T t)
+        public void Insert(T t)
         {
             items.Add(t);
         }
 
-        public void Update (T t)
+        public void Update(T t)
         {
             T tToUpdate = items.Find(i => i.Id == t.Id);
 
@@ -52,10 +53,10 @@ namespace MyShop.DataAccess.InMemory
             }
         }
 
-        public T Find (string Id)
+        public T Find(string Id)
         {
             T t = items.Find(i => i.Id == Id);
-            if (t!=null)
+            if (t != null)
             {
                 return t;
             }
