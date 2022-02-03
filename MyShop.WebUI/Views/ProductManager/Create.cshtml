@@ -6,8 +6,9 @@
 
 <h2>Create</h2>
 
+@*INTREBARE: Hthml.BeginForm(Actiune, Controller, Tipul Methodei (get, post, put...), dar ce este encType?)*@
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "ProductManager", FormMethod.Post, new {encType = "multipart/form-data"})) 
 {
     @Html.AntiForgeryToken()
     
@@ -49,8 +50,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Product.Image, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Product.Image, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Product.Image, "", new { @class = "text-danger" })
+                <input type="file" id="file" name="file" class="form-control" />
+                @*Aici am creeat un loc in care putem alege si transmite orice fisier din PC?*@
             </div>
         </div>
 
