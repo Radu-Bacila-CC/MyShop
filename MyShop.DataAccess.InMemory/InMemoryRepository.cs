@@ -9,10 +9,6 @@ using System.Threading.Tasks;
 
 namespace MyShop.DataAccess.InMemory
 {
-    //INTREBARE: Folosim clase generice doar ca sa nu repetam codul? Putem creea o singura clasa repository
-    //Pentru orice clasa care o sa o folosim?
-    //Daca dorim sa cautam variabile intr-o clasa generica, cum ar fi ID-ul, se poate?
-    //Putem avea o clasa de baza de la care luam anumite variabile
     public class InMemoryRepository<T> : IRepository<T> where T : BaseEntity
     {
         ObjectCache cache = MemoryCache.Default;

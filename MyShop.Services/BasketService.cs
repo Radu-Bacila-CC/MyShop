@@ -23,7 +23,6 @@ namespace MyShop.Services
             this.productContext = ProductContext;
         }
 
-        //INTREBARE: Ce mai putem face cu clasa HttpContextBase in afara de a accessa cookies?
         private Basket GetBasket(HttpContextBase httpContext, bool createIfNull)
         {
             HttpCookie cookie = httpContext.Request.Cookies.Get(BasketSessionName);

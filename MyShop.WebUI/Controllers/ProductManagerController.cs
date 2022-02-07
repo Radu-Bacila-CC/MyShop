@@ -14,10 +14,7 @@ namespace MyShop.WebUI.Controllers
     [Authorize(Roles = "Admin")]
     public class ProductManagerController : Controller
     {
-
-        //INTREBARE: De ce folosim interfete in definirea obiectelor? Nu este mai ok daca folosim doar clasele care implementeaza interfata?
-        //Putem interschimba atunci clasele dar e mai greu de inteles codul?
-        //Ce este un DI Container si Microsoft Unity?
+        
         IRepository<Product> context;
         IRepository<ProductCategory> productCategories;
 

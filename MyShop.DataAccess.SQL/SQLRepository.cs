@@ -11,9 +11,7 @@ namespace MyShop.DataAccess.SQL
 {
     public class SQLRepository<T> : IRepository<T> where T : BaseEntity
     {
-
-        //INTREBARE: DbSet reprezinta tabelul din baza de date?
-        //INTRBARE: DataContext este defapt baza de date si are metode de salvare din cauza ca implementeaza clasa DbContext?
+    
         internal DataContext context;
         internal DbSet<T> dbSet;
 
@@ -35,11 +33,6 @@ namespace MyShop.DataAccess.SQL
 
         public void Delete(string Id)
         {
-            //INTREBARE: context.Entry cauta in baza de date iar EntityState.Detached?
-            //Defapt cautam in baza de date obiectul, il atasam la tabelul din clasa asta (dbSet) si dupa il stergem?
-            //Dar atunci, fiindca dbSet=context.Set<T> (extragem din baza de date setul de valori) si noi efectuam modificari pe
-            //DbSet, de ce pe partea de commit putem folosit context.SaveChanges()?
-            //Nu trebuie sa adaugam datele din DbSet inapoi in context?
             var t = Find(Id);
             if (context.Entry(t).State == EntityState.Detached)
             {
@@ -60,9 +53,13 @@ namespace MyShop.DataAccess.SQL
 
         public void Update(T t)
         {
-            //INTREBARE: Ce fac aceste metode? Cauta si modifica automat campurile?
             dbSet.Attach(t);
             context.Entry(t).State = EntityState.Modified;
+        }
+
+        public void Test()
+        {
+
         }
     }
 }

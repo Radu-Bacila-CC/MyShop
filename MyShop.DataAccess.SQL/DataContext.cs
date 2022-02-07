@@ -15,12 +15,6 @@ namespace MyShop.DataAccess.SQL
             
         }
 
-        //INTREBARE: Daca variabilele sunt publice, de ce folosim get, set?
-        //Nu ar trebui sa facem ca variabilele sa fie private si sa folosim metodele?
-
-        //INTREBARE: Comenzile Enable-Migrations / Add-Migration din Package Manager Console
-        //realizeaza conexiunea cu baza de date?
-        //Comenzile:
         //Enable-Migration
         //Add-Migration Initial
         //Update-Database

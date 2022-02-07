@@ -12,11 +12,7 @@ namespace MyShop.DataAccess.InMemory
     {
         ObjectCache cache = MemoryCache.Default;
         List<Product> products;
-
-        //INTREBARE: (Sectiune 61) De ce folosim ObjectCache si nu facem conexiune cu o baza de date?
-        //Cache-ul nu se sterge la fiecare rulaj?
-
-        //Initializare cache
+        
         public ProductRepository()
         {
             products = cache["products"] as List<Product>;
@@ -68,8 +64,7 @@ namespace MyShop.DataAccess.InMemory
             }
         }
 
-        //Metoda returnare lista
-        //INTREBARE: Ce inseamna IQueryable si cum se foloseste?
+
         public IQueryable<Product> Collection()
         {
             return products.AsQueryable();
